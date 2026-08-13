@@ -1,0 +1,6 @@
+pyobjc-framework-Cocoa>=10.0
+pyobjc-framework-WebKit>=10.0
+pyobjc-framework-CoreLocation>=10.0
+pyobjc-framework-CoreWLAN>=10.0
+py2app>=0.28
+pyobjc-framework-ServiceManagement>=10.0

@@ -1,0 +1,21 @@
+# Build artifacts
+build/
+dist/
+.buildenv/
+*.egg-info/
+
+# DMG / staging
+*.dmg
+dmg-staging/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+
+# macOS
+.DS_Store
+
+# Local data (never commit usage data)
+*.db
