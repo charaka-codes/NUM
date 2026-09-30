@@ -1,0 +1,10 @@
+running nettop for ~25s (qBittorrent should be downloading)...
+
+snapshots captured: 5
+
+Google Chrome H.99698      [274597, 275104, 275464, 285276, 1380085]
+qbittorrent.65659          [8098583092, 8109950343, 8119122708, 8128270502, 8137635232]
+
+VERDICT
+  Google Chrome H.99698      CUMULATIVE  -> diff consecutive reports
+  qbittorrent.65659          climbing but slowly - paste numbers

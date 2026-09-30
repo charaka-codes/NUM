@@ -8,15 +8,22 @@
 
 set -e
 
-APP="dist/NUM.app"
-DMG="NUM.dmg"
-VOLNAME="NUM"
+APP=$(ls -d dist/*.app 2>/dev/null | head -n 1)
 STAGING="dmg-staging"
 
-if [ ! -d "$APP" ]; then
-    echo "❌ $APP not found. Run ./build.sh first."
+if [ -z "$APP" ] || [ ! -d "$APP" ]; then
+    echo "❌ No .app bundle found in dist/. Run ./build.sh first."
     exit 1
 fi
+
+# Name the DMG after whatever the app actually got built as (e.g. "NUM V2"),
+# rather than assuming "NUM" — build.sh's output name depends on the build
+# profile (NUM_PROFILE), so a hardcoded name here silently missed v2 builds.
+APP_BASENAME=$(basename "$APP" .app)
+DMG="${APP_BASENAME}.dmg"
+VOLNAME="$APP_BASENAME"
+
+echo "==> Found $APP"
 
 echo "==> Preparing staging folder"
 rm -rf "$STAGING" "$DMG"
