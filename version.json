@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.5.0",
   "url": "https://github.com/charaka-codes/NUM/releases/latest",
-  "notes": "Adds per-app data monitoring, a privacy toggle for network names, and performance improvements."
+  "notes": "Per-app tracking verified byte-accurate on real traffic, dark/light/system theme, a full in-app Uninstall, and a long list of fixes."
 }
