@@ -12,7 +12,7 @@ packet contents, no browsing history, nothing leaves your machine — the only
 network request NUM ever makes is a plain check for a newer version, and only
 when you explicitly click "Check for updates".
 
-<img src="docs/day.png" width="320" alt="NUM panel" />
+<img src="docs/day.png" width="420" alt="NUM panel" />
 
 ### Light and dark
 <img src="docs/theme.png" width="700" alt="NUM in light and dark theme" />
