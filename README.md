@@ -12,7 +12,18 @@ packet contents, no browsing history, nothing leaves your machine — the only
 network request NUM ever makes is a plain check for a newer version, and only
 when you explicitly click "Check for updates".
 
-![NUM panel](docs/screenshot.png)
+![NUM panel](docs/day.png)
+
+<p float="left">
+  <img src="docs/day.png" width="49%" alt="Light theme" />
+  <img src="docs/dark.png" width="49%" alt="Dark theme" />
+</p>
+
+### Per-app and monthly breakdown
+<p float="left">
+  <img src="docs/apps.png" width="49%" alt="Apps tab" />
+  <img src="docs/month.png" width="49%" alt="Month tab" />
+</p>
 
 ## Features
 
