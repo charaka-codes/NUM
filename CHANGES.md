@@ -1,3 +1,39 @@
+# NUM 2.5.1 — Apps total now matches your Month total
+
+## The gap, explained and shown
+
+The Apps tab never quite added up to the Month total — and a real
+investigation showed it never can by measurement alone. The interface
+counter (Day/Month) sees every byte on the wire, including packet headers
+and TCP acknowledgements; per-app counting via `nettop` only sees the data
+inside them. On two controlled 1 GB downloads, both apps were captured in
+full (Chrome 1015.9 MB, qBittorrent 1040.3 MB) — the remaining ~6% of
+download, and more of upload, was header overhead that belongs to no app.
+
+Rather than hide that difference, or invent per-app numbers by scaling,
+the Apps tab now shows it as one honest row: **Network overhead &
+untracked** (Month total minus all apps, never negative). The Apps total
+now always equals the Month total. If that row ever jumps by hundreds of
+MB, something downloaded without being tracked — it doubles as a warning
+light.
+
+Also fixed: the Apps tab's comparison total now skips excluded networks,
+exactly as the Month tab does.
+
+## Verified: NUM counts only real internet traffic
+
+A concern that NUM might over-count local traffic was tested directly.
+Day/Month totals matched macOS's own interface counter at **99.7%**, and a
+1.1 GB AirDrop transfer to a phone (which runs over `awdl0`, never touching
+the internet) was **correctly not counted at all**.
+
+## Faster startup from source
+
+A leftover test script, `nt.py`, shared its name with a Windows-only Python
+module that the standard library probes for at startup — so it silently
+ran a 25-second `nettop` test every time NUM started from source. Moved to
+`tools/nettop_probe.py`. The built app was never affected.
+
 # NUM 2.5.0 — per-app accuracy, themes, and a real uninstall
 
 ## Per-app tracking, finally accurate
