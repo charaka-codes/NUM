@@ -37,8 +37,8 @@ _plist = {
     "CFBundleName": APP_NAME,
     "CFBundleDisplayName": APP_NAME,
     "CFBundleIdentifier": BUNDLE_ID,
-    "CFBundleVersion": "2.5.0" if PROFILE else "1.0.0",
-    "CFBundleShortVersionString": "2.5.0" if PROFILE else "1.0.0",
+    "CFBundleVersion": "2.5.1" if PROFILE else "1.0.0",
+    "CFBundleShortVersionString": "2.5.1" if PROFILE else "1.0.0",
     "LSUIElement": True,  # menu bar only — no Dock icon
     "NSHumanReadableCopyright": "MIT License",
     # Required so macOS will show the Location prompt; without this string the

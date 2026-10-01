@@ -22,7 +22,7 @@ from datetime import datetime
 from . import core
 from . import settings as settings_mod
 
-VERSION = "2.5.0"
+VERSION = "2.5.1"
 AUTHOR = "Charaka (@charaka-codes)"
 
 
