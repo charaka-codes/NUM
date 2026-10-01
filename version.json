@@ -1,5 +1,5 @@
 {
-  "version": "2.5.0",
+  "version": "2.5.1",
   "url": "https://github.com/charaka-codes/NUM/releases/latest",
-  "notes": "Per-app tracking verified byte-accurate on real traffic, dark/light/system theme, a full in-app Uninstall, and a long list of fixes."
+  "notes": "Apps total now always matches your Month total, with a new 'Network overhead & untracked' row."
 }
