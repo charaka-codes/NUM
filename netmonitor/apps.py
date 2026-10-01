@@ -752,7 +752,17 @@ def app_dashboard_payload(con, period="month", value=None, top=25):
             _cs = None
     try:
         if _cs and period == "month" and value:
+            # Skip excluded networks, exactly as the Month tab does
+            # (popover._daily) — otherwise the two tabs disagree whenever a
+            # network is excluded.
+            try:
+                from .core import excluded_fingerprints as _exf
+            except Exception:
+                from core import excluded_fingerprints as _exf
+            _ex = _exf()
             for _day, _net, dn, up in _cs().month_daily(value):
+                if _net in _ex:
+                    continue
                 iface_d += dn or 0
                 iface_u += up or 0
     except Exception:
@@ -773,6 +783,29 @@ def app_dashboard_payload(con, period="month", value=None, top=25):
             apps.append(row)
             tot_d += down or 0
             tot_u += up or 0
+
+    # OVERHEAD ROW (2026-10-01): make the Apps total equal the Month total.
+    #
+    # The interface counter (Month tab) includes bytes no app can ever claim:
+    # packet headers, TCP acknowledgements, system services (shown in their
+    # own group, never in the apps sum), apps past the top-N list, and
+    # processes that exited between samples. Measured on real downloads:
+    # ~6% of download, more of upload. Rather than hide that difference or
+    # invent per-app numbers by scaling, show it as one honest, labelled row.
+    #
+    # Clamped at zero per direction: if apps ever exceed the interface (nettop
+    # also counts some loopback/LAN traffic), no negative row is shown and
+    # the total simply stays the apps sum. Only for single months, the only
+    # period the Apps tab navigates.
+    ov_d = max(0, iface_d - tot_d)
+    ov_u = max(0, iface_u - tot_u)
+    if period == "month" and (ov_d or ov_u):
+        label = "Network overhead & untracked"
+        apps.append({"app": label, "friendly": label,
+                     "down": ov_d, "up": ov_u, "networks": [],
+                     "flag": None, "reason": "", "overhead": True})
+        tot_d += ov_d
+        tot_u += ov_u
 
     return {"period": period, "value": value,
             "apps": apps, "system": system,
